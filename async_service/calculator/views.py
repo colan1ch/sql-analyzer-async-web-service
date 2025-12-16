@@ -81,7 +81,7 @@ def send_single_result_callback(task):
         logger.error(f"Background task error: {e}")
         return
     
-    callback_url = f"{GO_SERVICE_URL_BASE}/api/v1/queries/{result['query_id']}/results"
+    callback_url = f"{GO_SERVICE_URL_BASE}/api/v1/queries/{result['query_id']}/update-query-result"
     
     payload = {
         'query_id': result['query_id'],
@@ -142,9 +142,8 @@ def calculate(request):
     
     return Response(
         {
-            "message": f"Calculation for query ID {query_id} accepted. Processing in background.",
+            "message": f"query ID {query_id} accepted",
             "query_id": query_id,
-            "estimated_time": "5-10 seconds"
         },
         status=status.HTTP_202_ACCEPTED
     )
