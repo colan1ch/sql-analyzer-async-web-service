@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 import time
+import random
 import requests
 from concurrent import futures
 from django.conf import settings
@@ -29,7 +30,8 @@ def calculate_and_prepare_result(query_id, indexes_data):
         dict with calculation results
     """
     print(f"Starting calculation for query ID: {query_id}...")
-    time.sleep(7)  # 5-10 second delay
+    delay = random.uniform(5, 10)
+    time.sleep(delay)
     
     # Calculate execution time
     execution_time = calculate_execution_time(indexes_data)
